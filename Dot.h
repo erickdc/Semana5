@@ -6,18 +6,16 @@
 #include "Particle.h"
 
 #define PI 3.14159265
+#define TOTAL_PARTICLES 20
 
-const int TOTAL_PARTICLES = 20;
-const int DOT_WIDTH = 20;
-const int DOT_HEIGHT = 20;
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+
+
 
 class Dot
 {
     private:
     //The offsets
-    int x, y;
+
 
     SDL_Surface *red = NULL;
     SDL_Surface *green = NULL;
@@ -25,7 +23,7 @@ class Dot
 
     SDL_Surface *dot = NULL;
 
-    float angle, velocity;
+
 
     SDL_Surface *screen;
 
@@ -33,6 +31,10 @@ class Dot
     Particle *particles[ TOTAL_PARTICLES ];
 
     public:
+           float x, y;
+        const int DOT_WIDTH = 20;
+        const int DOT_HEIGHT = 20;
+        float angle, velocity;
     //Initializes
     Dot(SDL_Surface *screen);
 

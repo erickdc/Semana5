@@ -9,7 +9,7 @@ and may not be redistributed without written permission.*/
 #include "Dot.h"
 #include <string>
 #include <cstdlib>
-
+#include "Block.h"
 //The surfaces
 //const int SCREEN_WIDTH = 640;
 //const int SCREEN_HEIGHT = 480;
@@ -72,7 +72,10 @@ int main( int argc, char* args[] )
 
     //The dot that will be used
     Dot myDot(screen);
-
+    SDL_Surface *block_image= load_image("block.png");
+    Block block (100,100,87,50,block_image,screen, &myDot);
+    Block block2 (300,100, 87,50,block_image,screen, &myDot);
+    Block block3 (500,100, 87,50,block_image,screen, &myDot);
     //While the user hasn't quit
     while( quit == false )
     {
@@ -96,12 +99,24 @@ int main( int argc, char* args[] )
         //Move the dot
         myDot.move();
 
+
+            block.dotCollides();
+
+
+            block2.dotCollides();
+
+
+            block3.dotCollides();
+
+
         //Fill the screen white
         SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
 
         //Show the dot on the screen
+        block.show();
         myDot.show();
-
+        block2.show();
+        block3.show();
         //Update the screen
         if( SDL_Flip( screen ) == -1 )
         {
